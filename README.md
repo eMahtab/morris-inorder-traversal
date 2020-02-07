@@ -34,21 +34,21 @@ class Solution {
         if(root == null) 
             return res;
         TreeNode current = root;
-        TreeNode prev = null;
+        TreeNode predecessor = null;
         while(current != null){
         	if(current.left == null) {
         		res.add(current.val);
         		current = current.right;
         	} else {
-        		prev = current.left;
-        		while(prev.right != null && prev.right != current){
-        			prev = prev.right;
+        		predecessor = current.left;
+        		while(predecessor.right != null && predecessor.right != current){
+        			predecessor = predecessor.right;
         		}
-        		if(prev.right == null) {
-        			prev.right = current;
+        		if(predecessor.right == null) {
+        			predecessor.right = current;
         			current = current.left;
         		} else {
-        			prev.right = null;
+        			predecessor.right = null;
         			res.add(current.val);
         			current = current.right;
         		}
